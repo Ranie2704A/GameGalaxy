@@ -2,7 +2,7 @@ logging:
   level:
     ROOT: INFO
     org.hibernate.SQL: INFO
-    com.grupo8.ggbackend: INFO
+    com.grupo8.gg-backend: INFO
 
 spring:
   application:
@@ -77,10 +77,8 @@ application:
     allow-credentials: false
     max-age: 300
   kinde:
-    api: https://codecake.kinde.com
-    client-id: ${KINDE_CLIENT_ID}
-    client-secret: ${KINDE_CLIENT_SECRET}
-    audience: https://codecake.kinde.com/api
-  stripe:
-    api-key: ${STRIPE_API_KEY}
-    webhook-secret: ${STRIPE_WEBHOOK_SECRET}
+    api: https://gamegalaxy.kinde.com
+    client-id: 646e744d542746ad977314aa87c94d5f
+    client-secret: bisu0Px06QONAQ0PKgBEue7D4y2VOQI3AvuTuzXWttPfdantJhd5C
+    audience: https://gamegalaxy.kinde.com/api
+

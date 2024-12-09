@@ -1,5 +1,6 @@
 package com.grupo8.ggbackend.order.infrastructure.secondary.service.kinde;
 
+import jakarta.annotation.PostConstruct;
 import org.apache.hc.core5.http.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +18,11 @@ import java.util.Base64;
 import java.util.Map;
 import java.util.Optional;
 
+
 @Service
 public class KindeService {
 
   private static final Logger log = LoggerFactory.getLogger(KindeService.class);
-
   @Value("${application.kinde.api}")
   private String apiUrl;
 
@@ -34,10 +35,20 @@ public class KindeService {
   @Value("${application.kinde.audience}")
   private String audience;
 
-  private final RestClient restClient = RestClient.builder()
-    .requestFactory(new HttpComponentsClientHttpRequestFactory())
-    .baseUrl(apiUrl)
-    .build();
+  private RestClient restClient;
+
+  @PostConstruct
+  public void init() {
+    this.restClient = RestClient.builder()
+      .requestFactory(new HttpComponentsClientHttpRequestFactory())
+      .baseUrl(apiUrl)
+      .build();
+  }
+
+//  private final RestClient restClient = RestClient.builder()
+//    .requestFactory(new HttpComponentsClientHttpRequestFactory())
+//    .baseUrl(apiUrl)
+//    .build();
 
   private Optional<String> getToken() {
     try {
@@ -72,4 +83,5 @@ public class KindeService {
 
     return authorization.getBody();
   }
+
 }
